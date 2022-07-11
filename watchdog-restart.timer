@@ -1,4 +1,4 @@
-Unit]
+[Unit]
 Description=Restart USB watchdog each minute
 
 [Timer]
