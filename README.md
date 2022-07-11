@@ -24,6 +24,7 @@ Copy files and enable service and timer
 sudo cp watchdog-restart.service /etc/systemd/system
 sudo cp watchdog-restart.timer /etc/systemd/system
 
+sudo systemctl daemon-reload
 sudo systemctl enable --now watchdog-restart.service
 sudo systemctl enable --now watchdog-restart.timer
 ```
