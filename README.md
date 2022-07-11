@@ -8,7 +8,7 @@ This device plugs into a computer via an internal USB header and acts as a USB H
 
 ## (Re)setting timeout
 
-The easiest way is to write hex value to hid device using printf. According to information online, value 1E should cause a timeout in 5 minutes (0x1E is 30 in decimal and the device should multiply it internally by 10 seconds, so 30 * 10 seconds = 300 seconds = 5 minutes), but my observed timeout is about 2 minutes. It seems like my device has a different timeout implementation: number 10 (in hex) is about 58 seconds and number 11 (in hex) is about 62 seconds, so timeout in minutes should be multiplied by 11 hex, ~5 minute timeout should be 0x55.
+The easiest way is to write hex value to hid device using printf. According to information online, value 1E should cause a timeout in 5 minutes (0x1E is 30 in decimal and the device should multiply it internally by 10 seconds, so 30 * 10 seconds = 300 seconds = 5 minutes), but observed timeout is less than 2 minutes. It seems like my device has a different timeout implementation: number 10 (in hex) is about 58 seconds and number 11 (in hex) is about 62 seconds, so timeout in minutes should be multiplied by 11 hex, approximately 5 minute timeout is archievable using value 0x55.
 
 Example of timeout reset command:
 
