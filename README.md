@@ -8,12 +8,12 @@ This device plugs into a computer via an internal USB header and acts as a USB H
 
 ## (Re)setting timeout
 
-The easiest way is to write hex value to hid device using printf. According to information online, value 1E should cause a timeout in 5 minutes (0x1E is 30 in decimal and the device should multiply it internally by 10 seconds, so 30 * 10 seconds = 300 seconds = 5 minutes), but my observed timeout is about 2 minutes. Maybe my device has a different timeout implementation. Anyway, resetting timeout each minute does the job.
+The easiest way is to write hex value to hid device using printf. According to information online, value 1E should cause a timeout in 5 minutes (0x1E is 30 in decimal and the device should multiply it internally by 10 seconds, so 30 * 10 seconds = 300 seconds = 5 minutes), but my observed timeout is about 2 minutes. It seems like my device has a different timeout implementation: number 10 (in hex) is about 58 seconds and number 11 (in hex) is about 62 seconds, so timeout in minutes should be multiplied by 11 hex, ~5 minute timeout should be 0x55.
 
 Example of timeout reset command:
 
 ```bash
-printf '\x1E\x00' > /dev/hidraw0
+printf '\x55\x00' > /dev/hidraw0
 ```
 
 ## Using it with systemd
@@ -36,4 +36,4 @@ sudo systemctl list-timers
 
 ### Using it with cron or anything else (untested)
 
-Add a cron job for user root with command `printf '\x1E\x00' > /dev/hidraw0`
+Add a cron job for user root with command `printf '\x55\x00' > /dev/hidraw0`
