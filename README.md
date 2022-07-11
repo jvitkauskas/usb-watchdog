@@ -13,12 +13,12 @@ Easiest way is to write hex value to hid device using printf. According to infor
 Example timeout reset command:
 
 ```bash
-printf '\x1E\x00'>/dev/hidraw0
+printf '\x1E\x00' > /dev/hidraw0
 ```
 
 ## Using it with systemd
 
-Copy and enable service and timer
+Copy files and enable service and timer
 
 ```bash
 sudo cp watchdog-restart.service /etc/systemd/system
