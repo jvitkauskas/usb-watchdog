@@ -21,8 +21,8 @@ printf '\x55\x00' > /dev/hidraw0
 Copy files and enable service and timer
 
 ```bash
-sudo cp watchdog-restart.service /etc/systemd/system
-sudo cp watchdog-restart.timer /etc/systemd/system
+sudo cp watchdog-restart.service /etc/systemd/system/
+sudo cp watchdog-restart.timer /etc/systemd/system/
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now watchdog-restart.service
