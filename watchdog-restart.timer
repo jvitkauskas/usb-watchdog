@@ -1,0 +1,8 @@
+Unit]
+Description=Restart USB watchdog each minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+
+[Install]
+WantedBy=timers.target

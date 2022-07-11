@@ -1,0 +1,12 @@
+[Unit]
+Description=Restart USB watchdog
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c "printf '\x1E\x00' > /dev/hidraw0"
+Restart=on-failure
+RestartSec=30s
+
+[Install]
+WantedBy=default.target
+
